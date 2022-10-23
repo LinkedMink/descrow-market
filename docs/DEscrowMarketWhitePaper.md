@@ -55,7 +55,15 @@ We can look at existing systems that attempt provide some of the features listed
 
 #### NFTs
 
-NFTs excel at storing immutable records. This can have many advantages for a market that prioritizes transparency and redundancy. From an escrow market, we can have tokens for:
+NFTs store tokens on the blockchain pegged to a specific point in time that can viewed by anyone, so NFTs excel at storing immutable public records. Web 3 optimist claim they will be used to track digital owner many assets from art work to real estate as the technology evolves.
+
+##### Criticism
+
+Their's no mechanism to enforce ownership of an NFT by itself. Anybody can mint an NFT and say it means the holder owns an asset with on-chain consensus only verifying a transaction occurred. A record is meaningless without a product in hand where each NFT minter governs the rules for what the NFT means. Normally, a minter is a centralized entity with incentives that don't align with the NFT holder (sell for maximum price while maintaining maximum rights on the product), but there's no requirement for this. State laws have not caught up and with the internet spanning jurisdictions, enforcement seems dubious.
+
+##### Borrowed Ideas
+
+General storage on the blockchain can have many advantages for a market that prioritizes transparency and redundancy. From an escrow market, we can have tokens for:
 
 - Arbiters: A token can claim arbiters with an ID own an address that's verifiable and well-known for parties to access
 - Sellers: A token can claim sellers have a set of listings associated with an ID
@@ -72,10 +80,6 @@ We can audit the trail of these tokens and verify:
 
 Each token must have a one-to-one correspondence between the IDs. Since there's a cost associated with each transaction, there's a strong disincentive to game the system (review farms, etc.).
 
-##### Criticism
-
-Their's no mechanism to enforce ownership of an NFT by itself. Anybody can mint an NFT and say it means the holder owns an asset with on-chain consensus only verifying a transaction occurred. A record is meaningless without a product in hand where each NFT minter governs the rules for what the NFT means. Normally, a minter is a centralized entity with incentives that don't align with the NFT holder (sell for maximum price while maintaining maximum rights on the product), but there's no requirement for this. State laws have not caught up and with the internet spanning jurisdictions, enforcement seems dubious.
-
 #### TOR Markets
 
 TOR offers anonymity through a traditional web application interface albeit usually without client-side JavaScript support and other features we've come to expect. Markets hosted on TOR addresses often operate similarly to centralized markets. Administrators setup the market, maintain the infrastructure/app code, provide support, and resolve disputes. There's a review and feedback process in app for sellers/buyers and off app for markets themselves. The system incentives each party to behave appropriately and for everyone to profit as a result.
@@ -85,6 +89,10 @@ TOR offers anonymity through a traditional web application interface albeit usua
 Accessing web apps through TOR adds a high latency to each request, thus, are often quite slow. They don't have user friendly addresses that are easily discoverable. Without scripting capabilities (restricted for security and privacy), we often can't perform techniques to optimize data access and provide a responsive UX.
 
 With markets being centrally controlled, there may be a power imbalance between parties. If a market becomes too popular, they monopolize visibility and access allowing them to dictate the terms for sellers/buyers. There's always a possibility of exit scams as ownership can't be transferred through consensus with some market administrators maintaining majority control.
+
+##### Borrowed Ideas
+
+TOR markets work because each party has incentives to perform their duty. Without law enforcement or a central administrator, a DAO needs to replicate these incentives to enforce compliance. Although there may be more innovative ways to structure incentives, a DApp could use many of the same incentives.
 
 #### BitTorrent / The Pirate Bay
 
@@ -98,6 +106,10 @@ The protocol allows fast file transfers without any central direction while the 
 ##### Criticism
 
 BitTorrent has distributed hash tables (DHT) that allows self-propagating node discovery once a client has connected to a single node, but finding that first node still requires off-protocol searches. There's no persistent auditable place to view torrents across web search applications (do files have viruses, content quality, etc.). Although torrent search sites have stayed online, that has more to do with the centrally managed teams philosophy than structure enforcement. If The Pirate Bay's creators decided not to mirror the app data, users would be subject to the same central reliance as any other organization.
+
+##### Borrowed Ideas
+
+The hybrid model allows each piece to perform the task they excel out. A DApp can mix traditional web applications off-chain architectures with smart contracts on-chain that enforce compliance for DAO members. We can build an app that wraps both pieces in a single interface for our specific use case, i.e. an escrow market. The blockchain can serve a similar purpose as a DHT, but additionally, the blockchain also can serve as a universal directory service for DApps and DAO node members that can be updated autonomously.
 
 ## Solution
 
