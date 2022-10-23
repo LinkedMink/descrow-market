@@ -88,7 +88,16 @@ With markets being centrally controlled, there may be a power imbalance between 
 
 #### BitTorrent / The Pirate Bay
 
+In practice albeit not necessarily, BitTorrent uses a hybrid management model:
+
+- Web applications host torrent definitions in an accessible and familiar format
+- The BitTorrent protocol performs the hard work of transferring files.
+ 
+The protocol allows fast file transfers without any central direction while the web app allows quick searches. The Pirate Bay has been remarkably hard to take down despite repeated attempts from state actors. It owns this resilience to mirrors that span jurisdictions.
+
 ##### Criticism
+
+BitTorrent has distributed hash tables (DHT) that allows self-propagating node discovery once a client has connected to a single node, but finding that first node still requires off-protocol searches. There's no persistent auditable place to view torrents across web search applications (do files have viruses, content quality, etc.). Although torrent search sites have stayed online, that has more to do with the centrally managed teams philosophy than structure enforcement. If The Pirate Bay's creators decided not to mirror the app data, users would be subject to the same central reliance as any other organization.
 
 ## Solution
 
@@ -110,10 +119,12 @@ From the buyer/seller's point of view, an _arbiter_ presents itself as a single 
 
 ##### Shard Key
 
-- Region ID: We want to segment nodes such that a shard group contains nodes that are evenly distributed across the world, so that regardless of where a user comes from nodes can be accessed in roughly an optimal 
-  - Grouping of Geolocation Range
-  - Response time to known IP routers by group
-  - Hops to known IP routers by group
+- Region ID: We want to segment nodes such that a shard group contains nodes that are evenly distributed across the world, so that regardless of where a user comes from nodes can be accessed in roughly an optimal
+  - Potential Groupings:
+    - Geolocation blocks
+    - Response time to known IP routers
+    - Hops to known IP routers
+  - Any of these groupings need to be split as nodes are added/removed
 - Listing ID
 
 ##### Replication
@@ -183,7 +194,7 @@ We must store the data about markets on the blockchain, so that we're not depend
   - If buyer, get watched listings
 4. Set the initial endpoint if we get a response and cache the data for other endpoints as backups, else try again with another node.
 5. Use a DHT to update the state of nodes at runtime in the background
-6. User performs actions by making request to [DEscrow](#descrow-api) API
+6. User performs actions by making request to [DEscrow API](#descrow-api)
 
 ### Seller
 
