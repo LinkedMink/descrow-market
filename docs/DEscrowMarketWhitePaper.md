@@ -102,7 +102,7 @@ First lets look at how an _arbiter_ presents a market and escrow interface to bu
 
 #### Market Pool
 
-From the buyer/seller's point of view, an _arbiter_ presents itself as a single addressable entity, but we can't trust one person to arbitrate a transaction. Thus, operators will form together to operate a pool of nodes.
+From the buyer/seller's point of view, an _arbiter_ presents itself as a single addressable entity, but we can't trust one person to arbitrate a transaction. Thus, [operators](#market-operator) will form together to operate a pool of nodes.
 
 #### Market Shard Group
 
@@ -126,21 +126,64 @@ To ensure data integrity, we need to handle nodes leaving and joining the pool.
 
 #### Market Node
 
+Market [operators](#market-operator) set up an individual market node that joins the pool in a particular [shard group](#market-shard-group).
+
+##### Ethereum Node
+
+##### DEscrow API
+
+##### DEscrow Event Listener
+
 #### Market Operator
 
 Each operator has a single vote stake in [arbitration](#disputes) and are equal members to all other operators. They do the work necessary to process buyer/seller request and store the associated data that's not critical to audit transactions on the blockchain.
 
-### Buyer / Seller Client
+##### DEscrow Admin Client
+
+##### Incentives
+
+- Node Response Time
+- Node Listings Created
+- Node Transactions Processed
+- Dispute Response Time
+- Dispute Resolution Feedback
+- Support Ticket Response Time
+- Support Ticket Resolution Feedback
+
+#### Market Pool Configuration
+
+- Transaction Fees
+- Market Pool Requirements
+  - Operator Identity Requirements
+  - Node Performance and Configuration 
+- Rewards vs. Incentives Balance
+- Configuration Change Consensus
+
+##### New Market Pool Bootstrapping
+
+##### Join Market Pool Bootstrapping
+
+##### Shutdown Market Pool
+
+A market pool can be shutdown by reaching a critically low number of nodes.
+
+**TODO** Needs thought on how to handle
+
+**TODO** Should permanent shutdown be allowed by node consensus
+
+### DEscrow Client
 
 We must store the data about markets on the blockchain, so that we're not dependent on any node in the market, but from there, most request will be handled by market nodes.
 
-- Get the Market Pool metadata from the blockchain
-- Determine the API endpoints for each data set by Region ID
-- Get the user's initial data, examples:
+1. Get the Market Pool metadata from the ethereum blockchain
+2. Determine the API endpoints for each data set by Region ID
+3. Get the user's initial data, examples:
   - Settings for the market (default filters, etc.)
   - If seller, get listing statuses
   - If buyer, get watched listings
-- Set the initial endpoint if we get a response and cache the data for other endpoints as backups, else try again with another node.
+4. Set the initial endpoint if we get a response and cache the data for other endpoints as backups, else try again with another node.
+5. Use a DHT to update the state of nodes at runtime in the background
+6. User performs actions by making request to [DEscrow](#descrow-api) API
 
 ### Seller
 
@@ -154,6 +197,12 @@ We must store the data about markets on the blockchain, so that we're not depend
 
 #### Disputes
 
+### Support Tickets
+
 ## Conclusion
 
 ### Improvements
+
+Support Finalize Early
+
+### Vision
